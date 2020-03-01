@@ -1,0 +1,86 @@
+Data scientist journey
+
+	2020.03.01.
+
+	Supervised learning
+		- regression
+			Assign a continous numeral value. (ie.: For how much will my house be sold?)
+		- classification
+			Assign a label. (ie.: Is this a cat or a dog?)
+
+		We start with training examples - with associated correct labels
+		(ie. classify handwritten digits recodnigiton)
+		The data is partitioned into training and test data set. (There are
+		strategies to do so.)
+
+
+		Y = f(X) + ε
+
+		Y --> annual income
+		X --> years of higher education
+		f --> function which describes the relationship between X and Y
+		ε --> irreducible error (noise in the observed phenomenon)
+
+		Explicit, rule based solution engineering does not work well with complex
+		datasets. (ie.: try to engineer a rule based cat picture identifier)
+
+		During supervised learning the machine tries to understand the relationship
+		between X and Y by running labelled trianing data through a learning algorithm.
+
+		Input data has numerical and caterogical features, which can help us to predict
+		the target variable.
+
+		Y = f(X) + ε, where X = (x1, x2, ..., xn). X can be a tensor with any number of 
+		dimensions (1D - vector, 2D - matrix...)
+
+	Linear regression - ordinary least squares
+
+		Linear regression makes an assumption about the form of the function, which describes
+		the relationship between X and Y --> parametric method.
+
+			ŷ =  β0 +  β1 * x + ε
+
+			Where β0 is where the line intercpets the y axis and β1 is the slope of the function.
+			This time we will need to find out only two parameters, beacuse X is a 1D tesnor.
+
+			If 
+
+		The goal is to find the paremeters, which minimalize the error in the models predictions.
+
+		1) Define a cost funciton
+		2) Find the parameters, which are minimalizing the cost 
+
+		Cost = summ_for_all_x(ŷi - yi)^2 / 2*n
+
+		--> __Question__ -->  from what range would we choose the Beta numbers?
+				We can solve this issue with gradient descent, just choose some and let it work out the
+				parameters.
+		--> __Task__ --> implement the linear regression for a single feature in Python
+		--> __Task__ --> implement the linear regression for multiple features in Python
+
+
+		With only a handfull of features we can do the math for the cost function in a closed
+		form, but if we have a lot of features, then we might end up doing gradient descent.
+
+		(In mathematics, a closed-form expression is a mathematical expression expressed using a finite number of standard operations. It may contain constants, variables, certain "well-known" operations (e.g., + − × ÷), and functions (e.g., nth root, exponent, logarithm, trigonometric functions, and inverse hyperbolic functions), but usually no limit, differentiation or integration. The set of operations and functions admitted in a closed-form expression may vary with author and context.)
+
+	Gradient descent
+
+		We are trying to find out way to udnersntand what we need to do with our β parameters.
+		Cost function is a function of the two β parameters, X and Y are predetermined at the learning stage.
+
+		We are getting the partial derivatives of both ßs against the cost function and based on that we increase or
+		decrease them. The partial derivateive will indicate how much the total loss will be effected by changing the
+		value of the parameters.
+
+	Overfitting, underfitting
+
+		Fight overfitting by having more trianing data
+		Or use regularization --> add a part to the cost function which adds a penalty for large β values --> 
+			those add too much power for a features
+
+		Hyperparameter is a coefficient which tunes the penalty function part --> can be setted by cross validation
+
+		--> __Task__ : Implement the gradient descent
+		--> __Task__ : Play with the boston housing prices dataset
+		--> __Task__ : Read and move forward with the 'An Introduction into Statistical Learning'
