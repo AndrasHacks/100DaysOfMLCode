@@ -1,5 +1,10 @@
 Data scientist journey
 
+	Goal: become proefficient enough in data science to add meaningfull value
+	to space related data Research and Development. 
+
+	I want a piece of cake from the biggest revolution in the 21st century!
+
 	2020.03.01.
 
 	Supervised learning
@@ -8,10 +13,10 @@ Data scientist journey
 		- classification
 			Assign a label. (ie.: Is this a cat or a dog?)
 
-		We start with training examples - with associated correct labels
-		(ie. classify handwritten digits recodnigiton)
+		We start with training examples - with associated correct labels for the input data.
+		(ie.: Classify handwritten digits recodnigiton)
 		The data is partitioned into training and test data set. (There are
-		strategies to do so.)
+		strategies to do so. - cross validation).
 
 
 		Y = f(X) + ε
@@ -40,10 +45,9 @@ Data scientist journey
 
 			ŷ =  β0 +  β1 * x + ε
 
+			ŷ is the predicted value of y based on the two β parameters.
 			Where β0 is where the line intercpets the y axis and β1 is the slope of the function.
 			This time we will need to find out only two parameters, beacuse X is a 1D tesnor.
-
-			If 
 
 		The goal is to find the paremeters, which minimalize the error in the models predictions.
 
@@ -54,19 +58,22 @@ Data scientist journey
 
 		--> __Question__ -->  from what range would we choose the Beta numbers?
 				We can solve this issue with gradient descent, just choose some and let it work out the
-				parameters.
+				parameters based on the partial derivates.
 		--> __Task__ --> implement the linear regression for a single feature in Python
 		--> __Task__ --> implement the linear regression for multiple features in Python
-
 
 		With only a handfull of features we can do the math for the cost function in a closed
 		form, but if we have a lot of features, then we might end up doing gradient descent.
 
-		(In mathematics, a closed-form expression is a mathematical expression expressed using a finite number of standard operations. It may contain constants, variables, certain "well-known" operations (e.g., + − × ÷), and functions (e.g., nth root, exponent, logarithm, trigonometric functions, and inverse hyperbolic functions), but usually no limit, differentiation or integration. The set of operations and functions admitted in a closed-form expression may vary with author and context.)
+		(In mathematics, a closed-form expression is a mathematical expression expressed using
+		a finite number of standard operations. It may contain constants, variables, certain "well-known"
+		operations (e.g., + − × ÷), and functions (e.g., nth root, exponent, logarithm, trigonometric
+		functions, and inverse hyperbolic functions), but usually no limit, differentiation or integration.
+		The set of operations and functions admitted in a closed-form expression may vary with author and context.)
 
 	Gradient descent
 
-		We are trying to find out way to udnersntand what we need to do with our β parameters.
+		We are trying to find out a way to udnersntand what we need to do with our β parameters.
 		Cost function is a function of the two β parameters, X and Y are predetermined at the learning stage.
 
 		We are getting the partial derivatives of both ßs against the cost function and based on that we increase or
@@ -77,10 +84,19 @@ Data scientist journey
 
 		Fight overfitting by having more trianing data
 		Or use regularization --> add a part to the cost function which adds a penalty for large β values --> 
-			those add too much power for a features
+			those add too much power for a features.
 
-		Hyperparameter is a coefficient which tunes the penalty function part --> can be setted by cross validation
+		Hyperparameter is a coefficient which tunes the penalty function part -->
+		can be setted more precisely as we do cross validation
+
+		__Bias-Variance Tradeoff__:
+			Bias is the amount of error introduced with explaining a real world phenomenon with a simplified model.
+			Variance signals the models sensitivity to the idiosincronies of the training data.
 
 		--> __Task__ : Implement the gradient descent
 		--> __Task__ : Play with the boston housing prices dataset
 		--> __Task__ : Read and move forward with the 'An Introduction into Statistical Learning'
+
+2020.03.02.
+
+	Work on implementing the 1D tensor ordinary least function linear regression in Python.
