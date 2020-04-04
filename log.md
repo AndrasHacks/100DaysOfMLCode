@@ -49,4 +49,66 @@ Natural language processing - finding synonyms: If we observe in a large corpus 
 but allways occurt in the neightbourhood of the same words, that means, that A and B are likely to be synonyms.
 
 Follow data - choose a representation which can be used for unsupervices learning, as unlabeled data is more plentiful,
-than labelled data! With very large dtaa sources the data holds a lot of details, so use a non-paremetric model.
+than labelled data! With very large data sources the data holds a lot of details, so use a non-paremetric model.
+
+## March 20, 2020 - Friday
+
+logistic regression and Support Vector machines
+Both of them are paramteric models and serve to solve classification problems
+
+logistic model: sigmoid function to make sure, that the end result will be [0,1]
+SVM: geometrical thinking about the problem
+	- define a cost function for the optimization problem and let it have some cost
+	- throw data to higher dimensions.
+
+Tomorrow I would like to apply the data explanatory on the Boston Housing Data set
+
+___________________________________
+
+## March 28th, 2020 - Saturday
+
+I've started a MOOC - the Analytivcs Edge from MIT. They teach me how to R :)!
+
+Nifty R functions:
+	c() --> create arrays (only one type / array is allowed)
+			Country.Names = c("Great Britain", "USA", "Australia")
+
+	data.frame() -> Create a dataframe
+			CountryHealthCare = data.frame(Country.Names, HospitalsPerThousandCitizen)
+
+	str(MyDataFrame) --> gives the structure of the dataframe. Describes the columns and gives some hints.
+
+	summary(MyDataFrame) --> Gets numerical basic analysis about the data for a dataframe (Min, Max, Quartiles). 
+
+	rbind(MyDataFrame1, MyDataFrame2) --> pushes two dataframes to one
+
+	ShitEuropeanCountries = subset(CountryHealthCare, Region == "Europe" & HospitalsPerThousandCitizen < 0.01)
+	^ this one creates a subset of data based on the conditions
+
+	getwd(), setwd() --> get and set the working directory
+	read.csv(), write.csv() --> read or reate CSV files in the working directory
+
+	which.min(CountryHealthCare$HospitalsPerThousandCitizen) --> gets the row where the HospitalsPerThousandCitizen is the min
+	which.max()
+
+	CountryHealthCare$Country[1] --> gets the first row's Country
+
+	plot(CountryHealthCare$GDP, CountryHealthCare$HospitalsPerThousandCitizen) --> creates a scatterplot
+
+	myDataFrame[c("FirtsFavoriteColumn", "SecondFavoriteColumn", "ThirdFavoriteColumn")] --> Select multiple columns
+	from the dataframe
+
+	Histogram: Usefull to understand the distribution of a variable. --> hist(WHO$CellularUsage)
+
+	Box Plot: Usefull to understand the statistical range of a variable.
+				Box size --> area between 1st quartile and 3rd quartile. The horizontal line is the median.
+				The vertical line shows the min-max and the circles are outliers 
+
+				Inter cortal range --> height or the box --> 1st qu - 3rd qu
+				Outlier greater then 3rd qu + inter cortal range or less then the 1st qu - inter cortal range
+
+			boxplot(WHO$LifeExpectancy ~ WHO$Region)
+
+	Adding labels:
+		boxplot(WHO$LifeExpectancy ~ WHO$Region, xlab="", ylab="Life Expectancy", main="Life Expectancy of Countries by Region")
+
