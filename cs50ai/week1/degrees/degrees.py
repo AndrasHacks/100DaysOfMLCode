@@ -13,6 +13,35 @@ people = {}
 movies = {}
 
 
+class Node():
+    # state --> person_id
+    # action --> moviemovie_id_id
+    # parent --> parent node
+    def __init__(self, state, action, parent):
+        self.state = state
+        self.action = action
+        self.parent = parent
+
+
+class BFSFrontier():
+    def __init__(self):
+        self.frontier = []
+        self.explored = []
+
+    def empty(self):
+        return len(self.frontier) == 0
+
+    def add(self, node):
+        if node.state not in self.explored:
+            self.frontier.insert(0, node)
+            self.explored.append(node.state)
+
+    def remove(self):
+        node_to_return = self.frontier[-1]
+        del self.frontier[-1]
+        return node_to_return
+
+
 def load_data(directory):
     """
     Load data from CSV files into memory.
@@ -83,17 +112,32 @@ def main():
             movie = movies[path[i + 1][0]]["title"]
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
+# Small dataset demo:
+# 102,112384 --> 158,112384 --> 158,109830
+# --> 398,109830
+
 
 def shortest_path(source, target):
-    """
-    Returns the shortest list of (movie_id, person_id) pairs
-    that connect the source to the target.
+    frontier = BFSFrontier()
+    frontier.add(Node(source, None, None))
 
-    If no possible path, returns None.
-    """
+    while True:
+        if frontier.empty():
+            return None
 
-    # TODO
-    raise NotImplementedError
+        curr_node = frontier.remove()
+
+        if curr_node.state == target:
+            steps = []
+            while curr_node.parent != None:
+                steps.append((curr_node.action, curr_node.state))
+                curr_node = curr_node.parent
+            steps = steps[::-1]
+            return steps
+
+        neighbours = neighbors_for_person(curr_node.state)
+        for movie_id, person_id in neighbours:
+            frontier.add(Node(person_id, movie_id, curr_node))
 
 
 def person_id_for_name(name):
