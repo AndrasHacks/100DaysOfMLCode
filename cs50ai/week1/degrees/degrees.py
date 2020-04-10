@@ -112,10 +112,6 @@ def main():
             movie = movies[path[i + 1][0]]["title"]
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
-# Small dataset demo:
-# 102,112384 --> 158,112384 --> 158,109830
-# --> 398,109830
-
 
 def shortest_path(source, target):
     frontier = BFSFrontier()
