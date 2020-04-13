@@ -123,17 +123,30 @@ def shortest_path(source, target):
 
         curr_node = frontier.remove()
 
-        if curr_node.state == target:
-            steps = []
-            while curr_node.parent != None:
-                steps.append((curr_node.action, curr_node.state))
-                curr_node = curr_node.parent
-            steps = steps[::-1]
-            return steps
+        if goal_test(curr_node, target):
+            return get_path_to_source(target_node)
 
         neighbours = neighbors_for_person(curr_node.state)
         for movie_id, person_id in neighbours:
-            frontier.add(Node(person_id, movie_id, curr_node))
+            node_to_add = Node(person_id, movie_id, curr_node)
+
+            if goal_test(node_to_add, target):
+                return get_path_to_source(node_to_add)
+
+            frontier.add(node_to_add)
+
+
+def goal_test(node_to_test, target_state):
+    return node_to_test.state == target_state
+
+
+def get_path_to_source(target_node):
+    steps = []
+    while target_node.parent != None:
+        steps.append((target_node.action, target_node.state))
+        target_node = target_node.parent
+    steps = steps[::-1]
+    return steps
 
 
 def person_id_for_name(name):
